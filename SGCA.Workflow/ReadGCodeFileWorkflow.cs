@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGCA.DataAcces.GCode;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,9 @@ namespace SGCA.Workflow
         /// <summary>
         /// 
         /// </summary>        
-        internal static void Start() 
+        internal static IEnumerable<GCodeLine> Start(string filePath) 
         {
-        
+            return SGCA.DataAcces.GCode.GCodeParser.ParseGCode(filePath);            
         }
     }
 }

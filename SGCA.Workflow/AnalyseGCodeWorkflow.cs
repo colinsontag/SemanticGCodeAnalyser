@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SGCA.Workflow
 {
-    internal static class AbstractGCodeWorkflow
+    internal class AnalyseGCodeWorkflow
     {
-        internal static void Start() 
+        internal static void Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode) 
         {
         
         }

@@ -12,11 +12,12 @@ namespace SGCA.UI.Console
     {
         static void Main(string[] args)
         {
-            
+            string filePath = @"C:\Users\Colin\Documents\Studium\IWA\Flaschenverschluss_0.1.gcode";
+
             try
             {
                 System.Console.WriteLine("Here I Am Once Again");
-                MainWorkflow.Start();
+                MainWorkflow.Start(filePath);
 
             }
             catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }
