@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCA.UI.Console", "SGCA.UI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCA.DataAcces.GCode", "SGCA.DataAcces.GCode\SGCA.DataAcces.GCode.csproj", "{590E6495-76C6-4E3E-AAA0-1FD8DDE745BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCA.Business.Analyse", "SGCA.Business.Analyse\SGCA.Business.Analyse.csproj", "{77CCCFE0-D799-42EE-9072-08676D101EFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{590E6495-76C6-4E3E-AAA0-1FD8DDE745BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590E6495-76C6-4E3E-AAA0-1FD8DDE745BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590E6495-76C6-4E3E-AAA0-1FD8DDE745BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CCCFE0-D799-42EE-9072-08676D101EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CCCFE0-D799-42EE-9072-08676D101EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CCCFE0-D799-42EE-9072-08676D101EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CCCFE0-D799-42EE-9072-08676D101EFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{96B0B68E-7B6B-4589-BE64-67274A3FD2EE} = {FC09FEE0-F081-463E-977F-F5534C9F51E5}
 		{F8077997-A082-4762-BE15-9C129C274CEC} = {08080F32-7ED1-46C2-9BBB-A65FD263EF39}
 		{590E6495-76C6-4E3E-AAA0-1FD8DDE745BB} = {A08EF75B-F1BC-4CFF-BAB1-EE4D06ABBB32}
+		{77CCCFE0-D799-42EE-9072-08676D101EFC} = {FC45125B-9798-44A3-AC1B-CFE459466B91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0030FDA-92F3-476E-AC11-2CFC1698241E}

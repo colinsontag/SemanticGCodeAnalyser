@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGCA.Business.Analyse;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace SGCA.Workflow
 {
     internal class AnalyseGCodeWorkflow
     {
-        internal static void Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode) 
+        internal static void Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode)
         {
-        
+            var test = GCodeAnalyzer.Analyze(readInGCode, 100);
+            int i = 0;
         }
     }
 }
