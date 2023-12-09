@@ -11,7 +11,7 @@ namespace SGCA.Workflow
     {
         internal static void Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode)
         {
-            var test = GCodeAnalyzer.Analyze(readInGCode, 100);
+            var test = GCodeAnalyzer.Analyze(readInGCode, 50);
             int i = 0;
         }
     }

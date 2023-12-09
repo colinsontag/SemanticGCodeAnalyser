@@ -29,13 +29,22 @@ namespace SGCA.Business.Analyse
 
         private static bool IsInLine(DataAcces.GCode.GCodeLine point1, DataAcces.GCode.GCodeLine point2, double tolerance)
         {
+            
             // Convert GCodeLine to MathNet.Spatial.Euclidean.Point3D
             Point3D p1 = new Point3D(point1.X, point1.Y, point1.Z);
             Point3D p2 = new Point3D(point2.X, point2.Y, point2.Z);
-
-            // Check if the distance between the points is within the tolerance
-            double distance = p1.DistanceTo(p2);
-            return distance <= tolerance;
+            //Check if either of the Points is a (0,0,0). This is a G-Code behaiviour that is normal to for example Layerchanges and is not a wrong Point. 
+            if (p1 == new Point3D() || p2 == new Point3D())
+            {
+                return true;
+            }
+            else
+            {
+                // Check if the distance between the points is within the tolerance
+                double distance = p1.DistanceTo(p2);
+                return distance <= tolerance;
+            }
+            
         }
     }
 }

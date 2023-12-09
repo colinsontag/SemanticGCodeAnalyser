@@ -15,7 +15,6 @@ namespace SGCA.Workflow
             AnalyseGCodeWorkflow.Start(readInGCode);
 
 
-
         }
     }
 }

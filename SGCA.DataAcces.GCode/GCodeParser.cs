@@ -12,19 +12,19 @@ namespace SGCA.DataAcces.GCode
 {
     public static class GCodeParser
     {
-
         private static List<GCodeLine> gCodeLines = new List<GCodeLine>();
 
         public static List<GCodeLine> ParseGCode(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);
             double lastFValue = default;
-
+            bool printInitialisingDone = false;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i].Trim();
+                if (line.StartsWith("M107")) printInitialisingDone = true;
 
-                if (line.StartsWith("G1"))
+                if (line.StartsWith("G1") && printInitialisingDone)
                 {
                     GCodeLine gCodeLine = G1Command.Parse(line, lastFValue);
                     if (gCodeLine != null)
@@ -34,12 +34,8 @@ namespace SGCA.DataAcces.GCode
                         lastFValue = gCodeLine.F;
                     }
                 }
-            }
-
+            }            
             return gCodeLines;
         }
-
-        
     }
-
 }
