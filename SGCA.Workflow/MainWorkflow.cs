@@ -8,13 +8,11 @@ namespace SGCA.Workflow
 {
     public static class MainWorkflow
     {
-        public static void Start(string filePath)
+        public static List<int> Start(string filePath)
         {
             var readInGCode = ReadGCodeFileWorkflow.Start(filePath);
 
-            AnalyseGCodeWorkflow.Start(readInGCode);
-
-
+            return AnalyseGCodeWorkflow.Start(readInGCode);
         }
     }
 }

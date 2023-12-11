@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -59,7 +60,7 @@ namespace SGCA.UI.Main
         private ObservableCollection<LineItem> lineItems = new ObservableCollection<LineItem>();
         private int currentIndex = -1;
         string filepath = @"C:\Users\Colin\Documents\Studium\IWA\Flaschenverschluss_0.1_Fehler_Z1346.txt";
-        public MainWindow()
+        public MainWindow(List<int> linesToColor)
         {
             InitializeComponent();
 
@@ -74,16 +75,15 @@ namespace SGCA.UI.Main
                 lineItems.Add(new LineItem { Text = line, LineColor = Brushes.Black });
             }
 
-            // Specify the line number to make red (e.g., line 2)
-            int lineNumberToRed = 3;
 
-            // Set the color of the specified line to red
-            if (lineNumberToRed >= 1 && lineNumberToRed <= lineItems.Count)
+            foreach (var lineNumberToRed in linesToColor)
             {
-                lineItems[lineNumberToRed - 1].LineColor = Brushes.Red;
+                if (lineNumberToRed <= lineItems.Count)
+                {
+                    lineItems[lineNumberToRed - 1].LineColor = Brushes.Red;
+                }
             }
-
-            // Set the collection as the ItemsSource for the ListBox
+          
             lineListBox.ItemsSource = lineItems;
         }
         private void NextRedLineButton_Click(object sender, RoutedEventArgs e)

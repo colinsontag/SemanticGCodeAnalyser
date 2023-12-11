@@ -21,8 +21,8 @@ namespace SGCA.UI.Console
             try
             {
                 System.Console.WriteLine("Here I Am Once Again");
-                MainWorkflow.Start(filePath);
-                myWindow = new MainWindow();
+                var linesToColor = MainWorkflow.Start(filePath);
+                myWindow = new MainWindow(linesToColor);
                 myWindow.ShowDialog();
                 
             }

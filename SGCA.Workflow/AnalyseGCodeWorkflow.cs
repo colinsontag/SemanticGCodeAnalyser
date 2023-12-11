@@ -9,10 +9,9 @@ namespace SGCA.Workflow
 {
     internal class AnalyseGCodeWorkflow
     {
-        internal static void Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode)
+        internal static List<int> Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode)
         {
-            var test = GCodeAnalyzer.Analyze(readInGCode, 50);
-            int i = 0;
+            return GCodeAnalyzer.Analyze(readInGCode, 50);
         }
     }
 }
