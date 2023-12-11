@@ -29,6 +29,7 @@
         <TextBox Grid.Column="0" Grid.Row="3" Name="lineTextBox" />
         <Button Grid.Column="1" Grid.Row="3" Content="Save" Click="SaveButton_Click"/>
         <Button Grid.Column="1" Grid.Row="2" Content="Save to File" Click="SaveToFileButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Select File" Click="SelectFileButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0"/>
 
 
     </Grid>
