@@ -107,7 +107,7 @@ namespace SGCA.UI.Main
             {
                 lineItems[currentIndex].Text = lineTextBox.Text;
                 // Reset the color to black after editing
-                lineItems[currentIndex].LineColor = Brushes.Black;
+                lineItems[currentIndex].LineColor = Brushes.Green;
                 lineListBox.ItemsSource = "";
                 lineListBox.ItemsSource = lineItems;
             }

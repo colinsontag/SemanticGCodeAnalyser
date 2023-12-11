@@ -22,7 +22,9 @@ namespace SGCA.UI.Console
             {
                 System.Console.WriteLine("Here I Am Once Again");
                 var linesToColor = MainWorkflow.Start(filePath);
+                
                 myWindow = new MainWindow(linesToColor);
+                myWindow.ResizeMode = ResizeMode.CanMinimize;
                 myWindow.ShowDialog();
                 
             }
