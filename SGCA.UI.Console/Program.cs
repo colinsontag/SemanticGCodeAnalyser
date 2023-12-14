@@ -12,26 +12,21 @@ namespace SGCA.UI.Console
     
     internal class Program
     {
-        public static MainWindow myWindow;
+        
         [STAThread]
         static void Main(string[] args)
         {
             try
             {
-               
-                System.Console.WriteLine("Here I Am Once Again");
+                System.Console.WriteLine("---Semantic GCode Analyser---");
+                System.Console.WriteLine("Enter Filepath to Analyse:");
                 var filepath = System.Console.ReadLine();
-                var linesToColor = MainWorkflow.Start(filepath);
-                
-                myWindow = new MainWindow(linesToColor,filepath);
-                myWindow.ResizeMode = ResizeMode.CanMinimize;
-                myWindow.ShowDialog();
-                
+                MainWorkflow.Start(filepath);                
             }
             catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }
             finally
             {
-                System.Console.WriteLine("Dumb Message: Runtrugh Completet");
+                System.Console.WriteLine("Runtrugh Completet");
                 System.Console.WriteLine("Press the Any Key to Close");
                 System.Console.ReadKey();
             }

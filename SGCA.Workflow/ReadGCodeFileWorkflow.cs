@@ -17,7 +17,7 @@ namespace SGCA.Workflow
         /// </summary>        
         internal static IEnumerable<GCodeLine> Start(string filePath) 
         {
-            return SGCA.DataAcces.GCode.GCodeParser.ParseGCode(filePath);            
+            return GCodeParser.ParseGCode(filePath);            
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SGCA.UI.Main
     {
         private ObservableCollection<LineItem> lineItems = new ObservableCollection<LineItem>();
         private int currentIndex = -1;
-        private string filepath = "";
+        
         private List<int> _linesToColor = new List<int>();
 
 
@@ -119,7 +119,7 @@ namespace SGCA.UI.Main
 
 
             // Extract the filename (without extension) from the input file path
-            string inputFileNameWithoutExtension = Path.GetFileNameWithoutExtension(filepath);
+            string inputFileNameWithoutExtension = Path.GetFileNameWithoutExtension(_filepath);
 
             // Generate the timestamp in the format YYMMDDHHMM
             string timestamp = DateTime.Now.ToString("yyMMddHHmm");
@@ -128,7 +128,7 @@ namespace SGCA.UI.Main
             string outputFileName = $"{inputFileNameWithoutExtension}_{timestamp}.txt";
 
             // Specify the path to save the file
-            string filePathToSave = Path.Combine(Path.GetDirectoryName(filepath), outputFileName);
+            string filePathToSave = Path.Combine(Path.GetDirectoryName(_filepath), outputFileName);
 
             // Write the lines to the file
             File.WriteAllLines(filePathToSave, lineItems.Select(item => item.Text), Encoding.UTF8);
@@ -162,8 +162,7 @@ namespace SGCA.UI.Main
                     lineItems[lineNumberToRed - 1].LineColor = Brushes.Red;
                 }
             }
-            lineListBox.ItemsSource = lineItems;
-            
+            lineListBox.ItemsSource = lineItems;            
         }
     }
 }
