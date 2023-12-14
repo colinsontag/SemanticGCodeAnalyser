@@ -16,14 +16,14 @@ namespace SGCA.UI.Console
         [STAThread]
         static void Main(string[] args)
         {
-            string filePath = @"C:\Users\Colin\Documents\Studium\IWA\Flaschenverschluss_0.1_Fehler_Z1346.gcode";
-
             try
             {
+               
                 System.Console.WriteLine("Here I Am Once Again");
-                var linesToColor = MainWorkflow.Start(filePath);
+                var filepath = System.Console.ReadLine();
+                var linesToColor = MainWorkflow.Start(filepath);
                 
-                myWindow = new MainWindow(linesToColor);
+                myWindow = new MainWindow(linesToColor,filepath);
                 myWindow.ResizeMode = ResizeMode.CanMinimize;
                 myWindow.ShowDialog();
                 

@@ -66,20 +66,22 @@ namespace SGCA.UI.Main
         }
 
 
-        public MainWindow(List<int> linesToColor)
+        public MainWindow(List<int> linesToColor, string filepath)
         {
             InitializeComponent();
             _linesToColor = linesToColor;
+            _filepath = filepath;
+
+            doColuring();
         }
 
         private void NextRedLineButton_Click(object sender, RoutedEventArgs e)
         {
-            // Find the next red line
+           
             int nextRedLineIndex = FindNextRedLine(currentIndex + 1);
 
             if (nextRedLineIndex != -1)
-            {
-                // Scroll to the next red line
+            {                
                 lineListBox.SelectedIndex = nextRedLineIndex;
                 lineListBox.ScrollIntoView(lineListBox.SelectedItem);
                 currentIndex = nextRedLineIndex;
@@ -142,30 +144,26 @@ namespace SGCA.UI.Main
             // Display the selected text in the TextBox for editing
             lineTextBox.Text = currentIndex != -1 ? lineItems[currentIndex].Text : string.Empty;
         }
-        private void SelectFileButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "G-Code files (*.gcode)|*.gcode|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = "C:\\Users\\Colin\\Documents\\Studium\\IWA";
-
-            if (openFileDialog.ShowDialog() == true)
+        
+        private string _filepath = "";
+        private void doColuring()         
+        {       
+            string fileContent = File.ReadAllText(_filepath);
+            string[] lines = fileContent.Split('\n');
+            foreach (string line in lines)
             {
-                string fileContent = File.ReadAllText(openFileDialog.FileName);
-                string[] lines = fileContent.Split('\n');
-                foreach (string line in lines)
-                {
-                    lineItems.Add(new LineItem { Text = line, LineColor = Brushes.Black });
-                }
-
-                foreach (var lineNumberToRed in _linesToColor)
-                {
-                    if (lineNumberToRed <= lineItems.Count)
-                    {
-                        lineItems[lineNumberToRed - 1].LineColor = Brushes.Red;
-                    }
-                }
-                lineListBox.ItemsSource = lineItems;
+                lineItems.Add(new LineItem { Text = line, LineColor = Brushes.Black });
             }
+
+            foreach (var lineNumberToRed in _linesToColor)
+            {
+                if (lineNumberToRed <= lineItems.Count)
+                {
+                    lineItems[lineNumberToRed - 1].LineColor = Brushes.Red;
+                }
+            }
+            lineListBox.ItemsSource = lineItems;
+            
         }
     }
 }
