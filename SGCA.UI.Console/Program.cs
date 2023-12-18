@@ -20,7 +20,8 @@ namespace SGCA.UI.Console
             {
                 System.Console.WriteLine("---Semantic GCode Analyser---");
                 System.Console.WriteLine("Enter Filepath to Analyse:");
-                var filepath = System.Console.ReadLine();
+                var filepath = System.Console.ReadLine().Replace("\"","");
+
                 MainWorkflow.Start(filepath);                
             }
             catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }

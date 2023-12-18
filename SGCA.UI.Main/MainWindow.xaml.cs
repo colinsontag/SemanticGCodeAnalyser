@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Navigation;
 
 namespace SGCA.UI.Main
 {
@@ -80,8 +81,13 @@ namespace SGCA.UI.Main
            
             int nextRedLineIndex = FindNextRedLine(currentIndex + 1);
 
-            if (nextRedLineIndex != -1)
-            {                
+            if (nextRedLineIndex == -1)
+            {
+                MessageBox.Show("No more errors found");
+                Console.WriteLine("No more errors found");
+            }
+            else
+            {
                 lineListBox.SelectedIndex = nextRedLineIndex;
                 lineListBox.ScrollIntoView(lineListBox.SelectedItem);
                 currentIndex = nextRedLineIndex;
@@ -99,16 +105,16 @@ namespace SGCA.UI.Main
 
             }
             if (currentIndex != -1) return currentIndex;
-            return -1; // No more red lines
+            return -1; 
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Update the edited line in the ListBox
+            
             if (currentIndex != -1)
             {
                 lineItems[currentIndex].Text = lineTextBox.Text;
-                // Reset the color to black after editing
+               
                 lineItems[currentIndex].LineColor = Brushes.Green;
                 lineListBox.ItemsSource = "";
                 lineListBox.ItemsSource = lineItems;
@@ -116,32 +122,18 @@ namespace SGCA.UI.Main
         }
         private void SaveToFileButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-            // Extract the filename (without extension) from the input file path
-            string inputFileNameWithoutExtension = Path.GetFileNameWithoutExtension(_filepath);
-
-            // Generate the timestamp in the format YYMMDDHHMM
-            string timestamp = DateTime.Now.ToString("yyMMddHHmm");
-
-            // Construct the output file name by combining the input file name and timestamp
-            string outputFileName = $"{inputFileNameWithoutExtension}_{timestamp}.txt";
-
-            // Specify the path to save the file
+            string inputFileNameWithoutExtension = Path.GetFileNameWithoutExtension(_filepath);            
+            string timestamp = DateTime.Now.ToString("yyMMddHHmm");            
+            string outputFileName = $"{inputFileNameWithoutExtension}_{timestamp}.gcode";            
             string filePathToSave = Path.Combine(Path.GetDirectoryName(_filepath), outputFileName);
-
-            // Write the lines to the file
-            File.WriteAllLines(filePathToSave, lineItems.Select(item => item.Text), Encoding.UTF8);
-
+            var nonEmptyLines = lineItems.Select(item => item.Text.Trim()).Where(line => !string.IsNullOrEmpty(line));
+            File.WriteAllLines(filePathToSave, nonEmptyLines, Encoding.UTF8);
             MessageBox.Show($"File saved successfully as {outputFileName}!");
         }
 
         private void lineListBox_SelectionChanged_1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            // Update the index when the selection changes
-            currentIndex = lineListBox.SelectedIndex;
-
-            // Display the selected text in the TextBox for editing
+        {           
+            currentIndex = lineListBox.SelectedIndex;            
             lineTextBox.Text = currentIndex != -1 ? lineItems[currentIndex].Text : string.Empty;
         }
         
