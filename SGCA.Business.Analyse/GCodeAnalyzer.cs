@@ -26,7 +26,13 @@ namespace SGCA.Business.Analyse
             }
             return linesWithErrors;
         }
-
+        /// <summary>
+        /// Checks wether or not two points are out of tolerance
+        /// </summary>
+        /// <param name="point1"></param>
+        /// <param name="point2"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
         private static bool IsInLine(GCodeLine point1, GCodeLine point2, double tolerance)
         {            
             Point3D p1 = new Point3D(point1.X, point1.Y, point1.Z);
