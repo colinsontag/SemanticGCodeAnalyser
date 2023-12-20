@@ -12,9 +12,12 @@ namespace SGCA.UI.Console
     
     internal class Program
     {
-        
+        /// <summary>
+        /// Programm Startup:
+        /// Handels errors and starts the main worklfow
+        /// </summary>        
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             try
             {
@@ -27,7 +30,7 @@ namespace SGCA.UI.Console
             catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }
             finally
             {
-                System.Console.WriteLine("Runtrugh Completet");
+                System.Console.WriteLine("Runthrough Completed");
                 System.Console.WriteLine("Press the Any Key to Close");
                 System.Console.ReadKey();
             }

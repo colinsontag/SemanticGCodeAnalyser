@@ -10,10 +10,15 @@ using System.Threading.Tasks;
 
 namespace SGCA.DataAcces.GCode
 {
+   
     public static class GCodeParser
     {
         private static List<GCodeLine> gCodeLines = new List<GCodeLine>();
-
+        /// <summary>
+        /// Reads in the file at the given path and parses them
+        /// </summary>
+        /// <param name="filePath">Path to the file that should be checked</param>
+        /// <returns>Returns list of parsed G-Code lines</returns>
         public static List<GCodeLine> ParseGCode(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);

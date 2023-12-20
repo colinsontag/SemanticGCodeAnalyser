@@ -10,15 +10,15 @@ using System.Windows;
 namespace SGCA.Workflow
 {
     /// <summary>
-    /// 
+    /// Main Worklfow that handles the basic logic
     /// </summary>
     public static class MainWorkflow
     {
         private static MainWindow myWindow;
         /// <summary>
-        /// 
+        /// Starts the MainWorklfow
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="filePath">Path to the file that should be checked</param>
         public static void Start(string filePath)
         {
             var readInGCode = ReadGCodeFileWorkflow.Start(filePath);
