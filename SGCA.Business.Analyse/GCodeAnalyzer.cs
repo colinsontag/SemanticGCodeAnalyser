@@ -9,6 +9,12 @@ namespace SGCA.Business.Analyse
 {
     public class GCodeAnalyzer
     {
+        /// <summary>
+        /// Analyses the eneumerable with the given tolerance
+        /// </summary>
+        /// <param name="gCodeLines">List of the parsed GCodeLines</param>
+        /// <param name="tolerance">The tolerance tha points are checked with</param>
+        /// <returns></returns>
         public static List<int> Analyze(IEnumerable<GCodeLine> gCodeLines, double tolerance)
         {
             List<int> linesWithErrors = new List<int>();

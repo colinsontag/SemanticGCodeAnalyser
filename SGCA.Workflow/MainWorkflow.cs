@@ -21,8 +21,13 @@ namespace SGCA.Workflow
         /// <param name="filePath">Path to the file that should be checked</param>
         public static void Start(string filePath)
         {
+            //Starts workflow that read the G-Code from the File
             var readInGCode = ReadGCodeFileWorkflow.Start(filePath);
+
+            //Workflow that Analyses the readin GCode
             var linesToColor = AnalyseGCodeWorkflow.Start(readInGCode);
+
+            //Opens the the GUI
             myWindow = new MainWindow(linesToColor, filePath);
             myWindow.ResizeMode = ResizeMode.CanMinimize;
             myWindow.ShowDialog();

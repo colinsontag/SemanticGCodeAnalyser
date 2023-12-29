@@ -19,7 +19,11 @@ namespace SGCA.Workflow
         /// <returns>List with the line numbers where errors where found </returns>
         internal static List<int> Start(IEnumerable<DataAcces.GCode.GCodeLine> readInGCode)
         {
-            return GCodeAnalyzer.Analyze(readInGCode, 50);
+            
+            //--ToDo: this tolerance needs to be set in in the gui. Gui Rework is needed.
+            double tolerance = 50;
+            //--
+            return GCodeAnalyzer.Analyze(readInGCode, tolerance);
         }
     }
 }

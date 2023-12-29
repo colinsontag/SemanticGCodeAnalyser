@@ -17,6 +17,10 @@ namespace SGCA.UI.Main
     /// </summary>
     public partial class MainWindow : Window
     {
+        //For time reasons this code behind exist
+        //Everything here should be redone
+        //Because of the way this software will be used MVVM would be a great pattern
+
         private ObservableCollection<LineItem> lineItems = new ObservableCollection<LineItem>();
         private int currentIndex = -1;
         
@@ -58,12 +62,7 @@ namespace SGCA.UI.Main
             protected virtual void OnPropertyChanged(string propertyName)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-            public override string ToString()
-            {
-                return Text;
-            }
+            }            
         }
 
 
