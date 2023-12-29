@@ -62,7 +62,11 @@ namespace SGCA.UI.Main
             protected virtual void OnPropertyChanged(string propertyName)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }            
+            }
+            public override string ToString()
+            {
+                return Text;
+            }
         }
 
 
