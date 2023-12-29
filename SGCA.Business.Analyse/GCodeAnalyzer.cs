@@ -9,6 +9,12 @@ namespace SGCA.Business.Analyse
 {
     public class GCodeAnalyzer
     {
+        /// <summary>
+        /// Analyses the eneumerable with the given tolerance
+        /// </summary>
+        /// <param name="gCodeLines">List of the parsed GCodeLines</param>
+        /// <param name="tolerance">The tolerance tha points are checked with</param>
+        /// <returns></returns>
         public static List<int> Analyze(IEnumerable<GCodeLine> gCodeLines, double tolerance)
         {
             List<int> linesWithErrors = new List<int>();
@@ -26,25 +32,27 @@ namespace SGCA.Business.Analyse
             }
             return linesWithErrors;
         }
-
+        /// <summary>
+        /// Checks wether or not two points are out of tolerance
+        /// </summary>
+        /// <param name="point1"></param>
+        /// <param name="point2"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
         private static bool IsInLine(GCodeLine point1, GCodeLine point2, double tolerance)
-        {
-            
-            // Convert GCodeLine to MathNet.Spatial.Euclidean.Point3D
+        {            
             Point3D p1 = new Point3D(point1.X, point1.Y, point1.Z);
             Point3D p2 = new Point3D(point2.X, point2.Y, point2.Z);
-            //Check if either of the Points is a (0,0,0). This is a G-Code behaiviour that is normal to for example Layerchanges and is not a wrong Point. 
+             
             if (p1 == new Point3D() || p2 == new Point3D())
             {
                 return true;
             }
             else
-            {
-                // Check if the distance between the points is within the tolerance
+            {               
                 double distance = p1.DistanceTo(p2);
                 return distance <= tolerance;
-            }
-            
+            }            
         }
     }
 }

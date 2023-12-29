@@ -12,25 +12,32 @@ namespace SGCA.UI.Console
     
     internal class Program
     {
-        public static MainWindow myWindow;
+        /// <summary>
+        /// Programm Startup:
+        /// Handels errors and starts the main worklfow
+        /// </summary>        
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
-            string filePath = @"C:\Users\Colin\Documents\Studium\IWA\Flaschenverschluss_0.1_Fehler_Z1346.gcode";
-
             try
             {
-                System.Console.WriteLine("Here I Am Once Again");
-                var linesToColor = MainWorkflow.Start(filePath);
-                myWindow = new MainWindow(linesToColor);
-                myWindow.ShowDialog();
-                
+                System.Console.WriteLine("---Semantic GCode Analyser---");
+                System.Console.WriteLine("Enter Filepath to Analyse:");
+
+                //Gets the console input as filepath.
+                var filepath = System.Console.ReadLine().Replace("\"","");
+
+                //Main workflow call 
+                MainWorkflow.Start(filepath);                
             }
+            //Writes the exception text into the console
             catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }
+
+            //Final console output
             finally
             {
-                System.Console.WriteLine("Dumb Message: Runtrugh Completet");
-                System.Console.WriteLine("Press the Any Key to Close");
+                System.Console.WriteLine("Runthrough completed");
+                System.Console.WriteLine("Press the any key to close");
                 System.Console.ReadKey();
             }
         }
