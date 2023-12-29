@@ -15,9 +15,6 @@ This application allows you to load a GCode file which is then analysed and disp
 
 - Visual Studio (or any other C# development environment)
 
-### git 
-- git clone https://github.com/colinsontag/SemanticGCodeAnalyser.git
-
 ### Usage
 
 1. Lauch the application via the SemanticGCodeAnalyzer.EXE
